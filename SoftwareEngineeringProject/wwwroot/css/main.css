@@ -82,6 +82,11 @@ ul, li {
 
 
 /*---------------------------------------------*/
+.error {
+	color: red;
+	display: table;
+	margin: 0 auto;
+}
 input {
 	outline: none;
 	border: none;
