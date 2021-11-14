@@ -20,10 +20,6 @@ namespace SoftwareEngineeringProject.Pages.Database
         public string _id { get; set; } // used as an identified for the update method
 
         [BindProperty]
-       // [JsonProperty("ID")]
-        public int ID { get; set; }
-
-        [BindProperty]
         [Required(ErrorMessage = "Username is Required!")]
         //[JsonProperty("Username")]
         public string Username { get; set; }
@@ -39,7 +35,37 @@ namespace SoftwareEngineeringProject.Pages.Database
             this._id = "";
             this.Username = "";
             this.Password = "";
-            this.ID = -1;
+        }
+
+
+        private char[] forbiddenChars = new char[] { '<', '>', ',', '.', '{', '}', '[', ']', '%', '&', '/', ' ', '+', '-', '`', '~' , '\"', '\'', '?', ':', ';', '#', '$', '^','*','(',')'};
+
+        public bool verifyUsernameIntegrity()
+        {
+
+            foreach(char a in forbiddenChars)
+            {
+                if (Username.Contains(a))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool verifyPasswordIntegrity()
+        {
+
+            foreach (char a in forbiddenChars)
+            {
+                if (Password.Contains(a))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
     }

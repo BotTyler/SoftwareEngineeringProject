@@ -20,9 +20,10 @@ namespace SoftwareEngineeringProject.Pages.Database
         private string BaseDatabaseUrl = "https://userinfo-3e1c.restdb.io/rest/userinformation";
         private string apiKey;
 
-        // you can get the apikey/setup the object by using the following line:
-        // UserInfoDB db = new UserInfoDB(_configuration["ApiKey:DefaultKey"]);
-        // see LoginPage.cshtml.cs for an example
+       /* you can get the apikey/setup the object by using the following line:
+        * UserInfoDB db = new UserInfoDB(_configuration["ApiKey:DefaultKey"]);
+        * see LoginPage.cshtml.cs for an example
+        */
         public UserInfoDB(string apiKey)
         {
             this.apiKey = apiKey;
@@ -53,14 +54,39 @@ namespace SoftwareEngineeringProject.Pages.Database
             }
         }
 
-        public void deleteUser(UserInfoLogin user)
+        public bool deleteUser(UserInfoLogin user)
         {
-            // will add later
+            var deleteUrl = BaseDatabaseUrl + "/"+user._id+"";
+            var client = new RestClient(deleteUrl);
+            var request = new RestRequest(Method.DELETE);
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("x-apikey", apiKey);
+            request.AddHeader("content-type", "application/json");
+            IRestResponse response = client.Execute(request);
+
+            return response.IsSuccessful;
         }
 
-        public void updateUser(UserInfoLogin user)
+        // Not sure if this works
+        public bool updateUserPassword(UserInfoLogin user, string newPassword)
         {
-            // will add later
+            string updateUrl = BaseDatabaseUrl + "/" + user._id + "";
+            var client = new RestClient(updateUrl);
+            var request = new RestRequest(Method.PUT);
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("x-apikey", apiKey);
+            request.AddHeader("content-type", "application/json");
+            request.AddParameter("application/json", "{\"Password\":\""+newPassword+"\"}", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            return response.IsSuccessful;
+        }
+
+        // need to add functionality
+        public bool updateUserEvents()
+        {
+            // add when the event database is created
+            return false;
         }
 
         public UserInfoLogin[] getAllUsers()
@@ -86,7 +112,7 @@ namespace SoftwareEngineeringProject.Pages.Database
 
         public UserInfoLogin[] getUsersByUsername(string username)
         {
-            string QueryDatabaseUrl = BaseDatabaseUrl + "?q={\"Username\": \""+username+"\"}"; // verify that the username does not contain anything unwanted. (later)
+            string QueryDatabaseUrl = BaseDatabaseUrl + "?q={\"Username\": \"" + username + "\"}";
 
             var client = new RestClient(QueryDatabaseUrl);
             var request = new RestRequest(Method.GET);

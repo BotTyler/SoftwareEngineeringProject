@@ -37,23 +37,29 @@ namespace SoftwareEngineeringProject.Pages
         {
             if (ModelState.IsValid) // Checks to see if all fields are filled properly
             {
-                Cipher cipher = new Cipher(new DESCryptoServiceProvider());
-                user.Password = cipher.Encrypt(user.Password, user.Password);
-
-                // init the database
-                UserInfoDB db = new UserInfoDB(_configuration["ApiKey:DefaultKey"]);
-                if (db.validateUserInformation(user))
+                if (user.verifyUsernameIntegrity() == false || user.verifyPasswordIntegrity() == false)
                 {
-                    // account verified
+                    loginError = "Please only use characters a-z, 0-9, !, and @";
 
-                    Response.Redirect("/HomePage");
                 }
                 else
                 {
-                    // Account information is incorrect give error
-                    loginError = "Invalid Login Information";
+                    Cipher cipher = new Cipher(new DESCryptoServiceProvider());
+                    user.Password = cipher.Encrypt(user.Password, user.Password);
+
+                    // init the database
+                    UserInfoDB db = new UserInfoDB(_configuration["ApiKey:DefaultKey"]);
+                    if (db.validateUserInformation(user))
+                    {
+                        // account verified
+                        Response.Redirect("/HomePage");
+                    }
+                    else
+                    {
+                        // Account information is incorrect give error
+                        loginError = "Invalid Login Information";
+                    }
                 }
-                //Response.Redirect("/LoginPage");
             }
         }
     }

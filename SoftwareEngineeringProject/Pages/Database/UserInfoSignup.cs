@@ -26,7 +26,6 @@ namespace SoftwareEngineeringProject.Pages.Database
             this.Username = "";
             this.Password = "";
             this.Confirm = "";
-            this.ID = -1;
             this._id = "";
         }
 
