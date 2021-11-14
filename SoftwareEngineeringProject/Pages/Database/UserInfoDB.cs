@@ -1,4 +1,8 @@
-﻿using RestSharp;
+﻿using Microsoft.Extensions.Configuration;
+using Nancy.Json;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,50 +13,108 @@ namespace SoftwareEngineeringProject.Pages.Database
     /*
      * This class will be using a NoSql database.
      * In other words, no formal creation of a datbase object is needed.
-     * The use of http request will be used for every function.
+     * The use of http request will be used for every standard database function.
      */
     public class UserInfoDB
     {
+        private string BaseDatabaseUrl = "https://userinfo-3e1c.restdb.io/rest/userinformation";
+        private string apiKey;
 
-        public UserInfoDB()
+        // you can get the apikey/setup the object by using the following line:
+        // UserInfoDB db = new UserInfoDB(_configuration["ApiKey:DefaultKey"]);
+        // see LoginPage.cshtml.cs for an example
+        public UserInfoDB(string apiKey)
         {
-
-        }
-        public void insertUser(UserInfo user)
-        {
-
-        }
-
-        public void deleteUser(UserInfo user)
-        {
-
+            this.apiKey = apiKey;
         }
 
-        public void updateUser(UserInfo user)
+        // post request to insert a user into the database
+        public int insertUser(UserInfoLogin user)
         {
-
+            var client = new RestClient(BaseDatabaseUrl);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("x-apikey", apiKey);
+            request.AddHeader("content-type", "application/json");
+            request.AddParameter("application/json", "{\"Username\":\""+user.Username+"\",\"Password\":\""+user.Password+"\"}", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            ResponseStatus rs = response.ResponseStatus;
+            bool success = response.IsSuccessful;
+            if (rs == ResponseStatus.Completed && success == true)
+            {
+                return 0; // completed
+            }else if(rs == ResponseStatus.Completed && success == false)
+            {
+                return 1; // username already exist
+            }
+            else
+            {
+                return 2; // network error
+            }
         }
 
-        public UserInfo[] getUsers()
+        public void deleteUser(UserInfoLogin user)
         {
-            UserInfo[] a = { new UserInfo() };
-            var client = new RestClient("https://userinfo-3e1c.restdb.io/rest/userinformation");
+            // will add later
+        }
+
+        public void updateUser(UserInfoLogin user)
+        {
+            // will add later
+        }
+
+        public UserInfoLogin[] getAllUsers()
+        {
+            var client = new RestClient(BaseDatabaseUrl);
             var request = new RestRequest(Method.GET);
             request.AddHeader("cache-control", "no-cache");
-            request.AddHeader("x-apikey", "f7472ab661999bbedef1720ddd6e72a54f99d");
+            request.AddHeader("x-apikey", this.apiKey);
             request.AddHeader("content-type", "application/json");
             IRestResponse response = client.Execute(request);
-            return a;
+            if (response.IsSuccessful)
+            {
+
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                UserInfoLogin[] userList = js.Deserialize<UserInfoLogin[]>(response.Content);
+                return userList;
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public bool validateUserInformation(UserInfo loginUser)
+        public UserInfoLogin[] getUsersByUsername(string username)
         {
-            string username = ""; // change when i get the json file
-            string password = ""; // change when i get the json file
+            string QueryDatabaseUrl = BaseDatabaseUrl + "?q={\"Username\": \""+username+"\"}"; // verify that the username does not contain anything unwanted. (later)
 
-            if(loginUser.UName.Equals(username) && loginUser.PWord.Equals(password))
+            var client = new RestClient(QueryDatabaseUrl);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("x-apikey", this.apiKey);
+            request.AddHeader("content-type", "application/json");
+            IRestResponse response = client.Execute(request);
+            if (response.IsSuccessful)
             {
-                return true;
+
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                UserInfoLogin[] userList = js.Deserialize<UserInfoLogin[]>(response.Content);
+                return userList;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public bool validateUserInformation(UserInfoLogin loginUser)
+        {
+            UserInfoLogin[] listOfUsers = getUsersByUsername(loginUser.Username);
+            foreach(UserInfoLogin user in listOfUsers) {
+                if (loginUser.Username.Equals(user.Username) && loginUser.Password.Equals(user.Password))
+                {
+                    return true;
+                }
             }
             return false;
         }

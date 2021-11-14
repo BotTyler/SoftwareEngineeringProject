@@ -21,21 +21,21 @@
                     </span>
 
                     <div class="wrap-input100 validate-input">
-                        <input class="input100" type="text" asp-for="user.UName" placeholder="Username">
+                        <input class="input100" type="text" asp-for="user.Username" placeholder="Username">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
-                        <span class="error" asp-validation-for="user.UName"></span>
+                        <span class="error" asp-validation-for="user.Username"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" asp-for="user.PWord" placeholder="Password">
+                        <input class="input100" type="password" asp-for="user.Password" placeholder="Password">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
-                        <span class="error" asp-validation-for="user.PWord"></span>
+                        <span class="error" asp-validation-for="user.Password"></span>
 
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
@@ -46,6 +46,8 @@
                         </span>
                         <span class="error" asp-validation-for="user.Confirm"></span>
                     </div>
+                    <span class="error">@Model.SubmitError</span>
+
 
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn" asp-page-handler="submit">

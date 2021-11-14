@@ -44,9 +44,13 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "Pomelo.EntityFrameworkCore.MySql": {
+            "Nancy": {
               "target": "Package",
-              "version": "[5.0.3, )"
+              "version": "[2.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             },
             "RestSharp": {
               "target": "Package",
