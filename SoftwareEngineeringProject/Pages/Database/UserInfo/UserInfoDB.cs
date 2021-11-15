@@ -82,13 +82,6 @@ namespace SoftwareEngineeringProject.Pages.Database
             return response.IsSuccessful;
         }
 
-        // need to add functionality
-        public bool updateUserEvents()
-        {
-            // add when the event database is created
-            return false;
-        }
-
         public UserInfoLogin[] getAllUsers()
         {
             var client = new RestClient(BaseDatabaseUrl);
