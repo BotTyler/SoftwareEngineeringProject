@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SoftwareEngineeringProject.Pages.Database;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace SoftwareEngineeringProject
 {
@@ -28,12 +29,20 @@ namespace SoftwareEngineeringProject
             {
                 options.Conventions.AddPageRoute("/HomePage", "");
             });
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.LoginPath = "/LoginPage";
+            });
             services.AddRazorPages();
+
+            services.AddMvc();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -50,12 +59,17 @@ namespace SoftwareEngineeringProject
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
             });
+
+
+
         }
     }
 }

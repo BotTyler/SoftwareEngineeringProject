@@ -125,13 +125,37 @@ namespace SoftwareEngineeringProject.Pages.Database
                 return null;
             }
         }
+        public UserInfoLogin[] getUsersByUsernameAndPassword(string username, string password)
+        {
+            string QueryDatabaseUrl = BaseDatabaseUrl + "?q={\"Username\": \"" + username + "\", \"Password\": \""+password+"\"}";
+
+            var client = new RestClient(QueryDatabaseUrl);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("x-apikey", this.apiKey);
+            request.AddHeader("content-type", "application/json");
+            IRestResponse response = client.Execute(request);
+            if (response.IsSuccessful)
+            {
+
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                UserInfoLogin[] userList = js.Deserialize<UserInfoLogin[]>(response.Content);
+                return userList;
+                
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         public bool validateUserInformation(UserInfoLogin loginUser)
         {
-            UserInfoLogin[] listOfUsers = getUsersByUsername(loginUser.Username);
+            UserInfoLogin[] listOfUsers = getUsersByUsernameAndPassword(loginUser.Username, loginUser.Password);
             foreach(UserInfoLogin user in listOfUsers) {
                 if (loginUser.Username.Equals(user.Username) && loginUser.Password.Equals(user.Password))
                 {
+                    loginUser._id = user._id;
                     return true;
                 }
             }

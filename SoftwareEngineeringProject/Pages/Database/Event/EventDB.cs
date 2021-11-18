@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace SoftwareEngineeringProject.Pages.Database
 {
+    /*
+     * Database that contains all the event information.
+     * Does not contain any registration information just the events.
+     * The Event.cs class is the helper function for this database.
+     */
     public class EventDB
     {
 
