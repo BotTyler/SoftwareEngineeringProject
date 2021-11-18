@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -7,6 +9,7 @@ using SoftwareEngineeringProject.Pages.Encryption;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 
@@ -30,7 +33,6 @@ namespace SoftwareEngineeringProject.Pages
 
         public void OnGet()
         {
-
         }
 
         public void OnPost()
@@ -52,6 +54,7 @@ namespace SoftwareEngineeringProject.Pages
                     if (db.validateUserInformation(user))
                     {
                         // account verified
+                        login(user);
                         Response.Redirect("/HomePage");
                     }
                     else
@@ -61,6 +64,19 @@ namespace SoftwareEngineeringProject.Pages
                     }
                 }
             }
+        }
+
+        // creates the cookies for a login
+        private async void login(UserInfoLogin user)
+        {
+            var claims = new List<Claim>();
+            claims.Add(new Claim("username", user.Username));
+            claims.Add(new Claim("ID", user._id));
+            claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Username));
+            claims.Add(new Claim(ClaimTypes.Name, user.Username));
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+            await HttpContext.SignInAsync(claimsPrincipal);
         }
     }
 }

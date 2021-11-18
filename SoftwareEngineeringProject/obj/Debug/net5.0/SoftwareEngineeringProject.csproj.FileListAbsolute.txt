@@ -46,3 +46,6 @@ C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\Sof
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\bin\Debug\net5.0\Microsoft.Extensions.PlatformAbstractions.dll
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\bin\Debug\net5.0\Nancy.dll
+C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\TempSecurePage.cshtml.g.cs
+C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\LoggingOutPages\LogoutPage.cshtml.g.cs
+C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\LoggingOutPages\LogOutProcessing.cshtml.g.cs

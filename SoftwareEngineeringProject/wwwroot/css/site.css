@@ -35,6 +35,11 @@ html {
   }
 }
 
+.rightAlign {
+    right: 50px;
+    position: absolute;
+}
+
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
