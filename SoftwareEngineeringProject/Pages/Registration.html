@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/util.css">
+        <link rel="stylesheet" type="text/css" href="./css/main.css">
+    </head>
+    <body>
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100">
+
+                    <form class="login100-form validate-form" method="post">
+                        <form class="login100-form validate-form" method="post">
+                            <div class="error" asp-validation-summary="ModelOnly"></div>
+                            <span class="login100-form-title">
+                                Event Registration Details
+                            </span>
+                            <h2>Event Name</h2>
+                            <div class="wrap-input100 validate-input">
+                                <input class="inputRegistration100" type="text">
+                                <span class="focus-input100"></span>
+                                <span class="error" asp-validation-for="user.Username"></span>
+                            </div>
+                            <h2>Location</h2>
+                            <div class="wrap-input100 validate-input">
+                                <input class="inputRegistration100" type="text">
+                                <span class="focus-input100"></span>
+                                <span class="error" asp-validation-for="user.Username"></span>
+                            </div>
+                            <h2>Date</h2>
+                            <div class="wrap-100 validate-input">
+                                <input class="inputRegistration100" type="text">
+                                <span class="focus-input100"></span>
+                                <span class="error" asp-validation-for="user.Username"></span>
+                            </div>
+                            <h2>Time</h2>
+                            <div class="wrap-input100 validate-input">
+                                <input class="inputRegistration100" type="text">
+                                <span class="focus-input100"></span>
+                                <span class="error" asp-validation-for="user.Username"></span>
+                            </div>
+                            <h2>Description</h2>
+                            <div class="wrap-input100 validate-input">
+                                <textarea class="textareaDescription100" name="Text1" cols="40" rows="4"></textarea>
+                            </div>
+                            <div class="container-login100-form-btn">
+                                <button class="login100-form-btn" asp-page-handler="submit">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
