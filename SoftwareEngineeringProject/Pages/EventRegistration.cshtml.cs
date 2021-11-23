@@ -50,43 +50,12 @@ namespace SoftwareEngineeringProject.Pages
                 {
                     // everything went through fine
                     SubmitError = "Submit Complete";
+                    Response.Redirect("/HomePage");
                 }
                 else
                 {
                     SubmitError = "Submit Failed";
                 }
-                /* if (user.verifyUsernameIntegrity() == false || user.verifyPasswordIntegrity() == false)
-                 {
-                     this.SubmitError = "Please only use characters a-z, 0-9, !, and @";
-                 }
-                 else
-                 {
-
-
-                     Cipher cipher = new Cipher(new DESCryptoServiceProvider());
-                     user.Password = cipher.Encrypt(user.Password, user.Password);
-                     user.Confirm = "";
-                     UserInfoDB db = new UserInfoDB(_configuration["ApiKey:DefaultKey"]);
-                     int isAccountCreated = db.insertUser(user);
-                     if (isAccountCreated == 0)
-                     {
-                         // creation successful
-                         user.CleanSignupUser();
-                         user = new UserInfoSignup();
-                         Response.Redirect("/LoginPage");
-                     }
-                     else if (isAccountCreated == 1)
-                     {
-                         // username was already found within the database
-                         this.SubmitError = "Username is Already Taken";
-                     }
-                     else
-                     {
-                         // network error
-                         this.SubmitError = "Something Unexpected Happened";
-                     }
-                }*/
-
             }
         }
 

@@ -29,7 +29,7 @@ namespace SoftwareEngineeringProject
             {
                 //options.Conventions.AddPageRoute("/HomePage", "");
 
-                options.Conventions.AddPageRoute("/EventRegistration", "");
+                options.Conventions.AddPageRoute("/HomePage", "");
             });
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             {

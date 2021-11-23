@@ -24,6 +24,7 @@ namespace SoftwareEngineeringProject.Pages.Database
         [Required(ErrorMessage = "A Location is Required!")]
         public string EventLocation { get; set; }
 
+        // Format should be in ('MM/dd/yyyy') 
         [BindProperty]
         [Required(ErrorMessage = "An event date is Required!")]
         public DateTime EventDate { get; set; }

@@ -63,6 +63,8 @@
                             <span class="error" asp-validation-for="regEvent.EventDescription"></span>
                         </div>
                     </div>
+                    <span class="error">@Model.SubmitError</span>
+
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn" asp-page-handler="submit">
                             Submit

@@ -1,9 +1,19 @@
 ﻿<Properties StartupConfiguration="{EE9E4551-F414-4CE0-9316-E8CCB02B2CC7}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SoftwareEngineeringProject/Pages/EventRegistration.cshtml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SoftwareEngineeringProject/Pages/HomePage.cshtml">
     <Files>
-      <File FileName="SoftwareEngineeringProject/Pages/EventRegistration.cshtml.cs" Line="43" Column="54" />
-      <File FileName="SoftwareEngineeringProject/Pages/EventRegistration.cshtml" Line="1" Column="1" />
+      <File FileName="SoftwareEngineeringProject/Pages/EventRegistration.cshtml.cs" Line="53" Column="52" />
+      <File FileName="SoftwareEngineeringProject/Pages/EventRegistration.cshtml" Line="67" Column="1" />
       <File FileName="SoftwareEngineeringProject/Pages/Signup.cshtml.cs" Line="1" Column="1" />
+      <File FileName="SoftwareEngineeringProject/Startup.cs" Line="32" Column="60" />
+      <File FileName="SoftwareEngineeringProject/Pages/_ViewImports.cshtml" Line="1" Column="1" />
+      <File FileName="SoftwareEngineeringProject/Pages/_ViewStart.cshtml" Line="1" Column="1" />
+      <File FileName="SoftwareEngineeringProject/Pages/Shared/_ValidationScriptsPartial.cshtml" Line="1" Column="1" />
+      <File FileName="SoftwareEngineeringProject/Pages/Shared/_Layout.cshtml" Line="29" Column="26" />
+      <File FileName="SoftwareEngineeringProject/Pages/Database/Event/EventDB.cs" Line="51" Column="1" />
+      <File FileName="SoftwareEngineeringProject/Pages/Database/Event/Event.cs" Line="1" Column="1" />
+      <File FileName="SoftwareEngineeringProject/Pages/LoginPage.cshtml" Line="1" Column="1" />
+      <File FileName="SoftwareEngineeringProject/Pages/Signup.cshtml" Line="50" Column="1" />
+      <File FileName="SoftwareEngineeringProject/Pages/HomePage.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,14 +24,18 @@
                 <Node name="Database" expanded="True">
                   <Node name="Event" expanded="True" />
                 </Node>
-                <Node name="EventRegistration.cshtml" expanded="True">
-                  <Node name="EventRegistration.cshtml.cs" selected="True" />
-                </Node>
+                <Node name="Shared" expanded="True" />
+                <Node name="EventRegistration.cshtml" expanded="True" />
+                <Node name="HomePage.cshtml" selected="True" />
+                <Node name="LoginPage.cshtml" expanded="True" />
                 <Node name="Signup.cshtml" expanded="True" />
               </Node>
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

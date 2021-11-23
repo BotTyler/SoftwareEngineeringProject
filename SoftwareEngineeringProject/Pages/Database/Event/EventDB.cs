@@ -27,19 +27,13 @@ namespace SoftwareEngineeringProject.Pages.Database
             //"{\"Username\":\"" + regEvent.Username + "\",\"Password\":\"" + regEvent.Password + "\"}"
             string param = "{";
             param += "\"EventName\":\""+regEvent.EventName+"\",";
-            param += "\"EventDate\":\"" + regEvent.EventDate + "\",";
+            param += "\"EventDate\":\"" + regEvent.EventDate.ToString("MM/dd/yyyy") + "\",";
             param += "\"EventDescription\":\"" + regEvent.EventDescription + "\",";
-            param += "\"Owner_ID\":\"" + regEvent.Owner_ID + "\"";
-
-            if(!String.IsNullOrEmpty(regEvent.NumberOfSlots.ToString())) // non required sections
-            {
-                param += "\"NumberOfSlots\":\"" + regEvent.NumberOfSlots + "\",";
-            }
-
-            if (!String.IsNullOrEmpty(regEvent.AvailableSlots.ToString())) // non required section
-            {
-                param += "\"AvailableSlots\":\"" + regEvent.AvailableSlots + "\",";
-            }
+            param += "\"Owner_ID\":\"" + regEvent.Owner_ID + "\",";
+            param += "\"EventLocation\":\"" + regEvent.EventLocation + "\",";
+            param += "\"NumberOfSlots\":\"" + regEvent.NumberOfSlots + "\",";
+            param += "\"AvailableSlots\":\"" + regEvent.AvailableSlots + "\"";
+            
 
             param += "}";
             return param;
