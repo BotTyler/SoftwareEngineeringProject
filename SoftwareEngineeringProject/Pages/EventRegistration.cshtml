@@ -1,0 +1,76 @@
+﻿@page
+@model EventRegistrationModel
+@{
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="./fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/util.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+</head>
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+
+                <form class="login100-form validate-form" method="post">
+                    <div class="error" asp-validation-summary="ModelOnly"></div>
+                    <span class="login100-form-title">
+                        Event Registration Details
+                    </span>
+
+                    <div>
+                        <label class="login100-form-data">Event Name</label>
+                        <div class="wrap-input100 validate-input">
+                            <input class="inputRegistration100" type="text" asp-for="regEvent.EventName">
+                            <span class="focus-input100"></span>
+                            <span class="error" asp-validation-for="regEvent.EventName"></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="login100-form-data">Location</label>
+                        <div class="wrap-input100 validate-input">
+                            <input class="inputRegistration100" type="text" asp-for="regEvent.EventLocation">
+                            <span class="focus-input100"></span>
+                            <span class="error" asp-validation-for="regEvent.EventLocation"></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="login100-form-data vert-left">Date</label>
+                        <label class="login100-form-data vert-right">Slots</label>
+
+                        <div class="wrap-100 validate-input vert-left">
+                            <input class="inputRegistration100" type="date" asp-for="regEvent.EventDate">
+                            <span class="focus-input100"></span>
+                            <span class="error" asp-validation-for="regEvent.EventDate"></span>
+                        </div>
+                        <div class="wrap-100 validate-input vert-right">
+                            <input class="inputRegistration100" type="number" min="0" placeholder="0" asp-for="regEvent.NumberOfSlots">
+                            <span class="focus-input100"></span>
+                            <span class="error" asp-validation-for="regEvent.NumberOfSlots"></span>
+
+                        </div>
+
+                    </div>
+                    <div style="clear:both"></div>
+
+                    <div>
+                        <label class="login100-form-data">Description</label>
+                        <div class="wrap-input100 validate-input">
+
+                            <textarea class="textareaDescription100" cols="40" rows="4" asp-for="regEvent.EventDescription"></textarea>
+                            <span class="error" asp-validation-for="regEvent.EventDescription"></span>
+                        </div>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" asp-page-handler="submit">
+                            Submit
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
