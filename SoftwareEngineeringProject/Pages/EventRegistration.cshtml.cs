@@ -39,7 +39,7 @@ namespace SoftwareEngineeringProject.Pages
                     regEvent.Owner_ID = HttpContext.User.FindFirst("ID").Value;
                 }
 
-                EventDB eventDB = new EventDB(_configuration["ApiKey:DefaultKey"])
+                EventDB eventDB = new EventDB(_configuration["ApiKey:DefaultKey"]);
                 
                 /* if (user.verifyUsernameIntegrity() == false || user.verifyPasswordIntegrity() == false)
                  {
