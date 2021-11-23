@@ -38,9 +38,23 @@ namespace SoftwareEngineeringProject.Pages
                 {
                     regEvent.Owner_ID = HttpContext.User.FindFirst("ID").Value;
                 }
+                else
+                {
+                    // could not find theOwner_ID
+                    SubmitError = "Cannot find user ID.";
+                    return;
+                }
 
                 EventDB eventDB = new EventDB(_configuration["ApiKey:DefaultKey"]);
-                
+                if (eventDB.insertEvent(regEvent))
+                {
+                    // everything went through fine
+                    SubmitError = "Submit Complete";
+                }
+                else
+                {
+                    SubmitError = "Submit Failed";
+                }
                 /* if (user.verifyUsernameIntegrity() == false || user.verifyPasswordIntegrity() == false)
                  {
                      this.SubmitError = "Please only use characters a-z, 0-9, !, and @";

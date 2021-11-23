@@ -1,0 +1,35 @@
+﻿<Properties StartupConfiguration="{EE9E4551-F414-4CE0-9316-E8CCB02B2CC7}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SoftwareEngineeringProject/Pages/EventRegistration.cshtml.cs">
+    <Files>
+      <File FileName="SoftwareEngineeringProject/Pages/EventRegistration.cshtml.cs" Line="43" Column="54" />
+      <File FileName="SoftwareEngineeringProject/Pages/EventRegistration.cshtml" Line="1" Column="1" />
+      <File FileName="SoftwareEngineeringProject/Pages/Signup.cshtml.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SoftwareEngineeringProject" expanded="True">
+            <Node name="SoftwareEngineeringProject" expanded="True">
+              <Node name="Pages" expanded="True">
+                <Node name="Database" expanded="True">
+                  <Node name="Event" expanded="True" />
+                </Node>
+                <Node name="EventRegistration.cshtml" expanded="True">
+                  <Node name="EventRegistration.cshtml.cs" selected="True" />
+                </Node>
+                <Node name="Signup.cshtml" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.SoftwareEngineeringProject PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
