@@ -27,7 +27,9 @@ namespace SoftwareEngineeringProject
         {
             services.AddMvc().AddRazorPagesOptions(options =>
             {
-                options.Conventions.AddPageRoute("/HomePage", "");
+                //options.Conventions.AddPageRoute("/HomePage", "");
+
+                options.Conventions.AddPageRoute("/EventRegistration", "");
             });
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             {

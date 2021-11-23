@@ -100,7 +100,6 @@ header {
   text-align: center;
   font-size: x-large;
   background-color: #2e2836;
-  padding: 100px;
 }
 
 /* The dropdown container */
@@ -232,20 +231,23 @@ iframe {
   width: 100%;
   min-height: 100vh;
   justify-content: left;
-	align-items: left;
+	align-items: baseline;
 	padding: 0px;
-	background: #121212;
 }
 
+.wrap-content {
+	min-height: 100px;
+	height: auto;
+	margin: 80px auto 0px auto;
+	overflow: auto
+}
 .wrap-home100 {
-	width: 900px;
 	background: #2e2836;
 	border-radius: 10px;
 	overflow: hidden;
 	justify-content: space-between;
-  align-items: left;
 	padding: 25px;
-  margin: 15px;
+	margin: 15px;
 }
 
 
@@ -284,11 +286,22 @@ iframe {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	padding: 177px 130px 33px 95px;
+	padding: 90px 130px 33px 95px;
 }
 
 /*//////////////////////////////////////////////////////////////////
 [ registration ]*/
+
+.vert-left {
+	padding-right:5px;
+	width: 70%;
+	float: left;
+}
+.vert-right {
+	padding-left:5px;
+	width: 30%;
+	float: right;
+}
 
 .inputRegistration100 {
   font-family: Poppins-Medium;
@@ -297,11 +310,11 @@ iframe {
   color: #000;
 
   display: block;
-  width: 50%;
+  width: 100%;
   background: #e6e6e6;
-  height: 25px;
+  height: 50px;
   border-radius: 25px;
-  padding: 0 30px 0 68px;
+  padding: 0 25px 0 25px;
 }
 
 .textareaDescription100 {
@@ -313,9 +326,9 @@ iframe {
   display: block;
   width: 100%;
   background: #e6e6e6;
-  height: 100px;
+  height: 300px;
   border-radius: 25px;
-  padding: 0 30px 0 68px;
+  padding: 20px 20px 0px 20px;
 }
 
 /*------------------------------------------------------------------
@@ -337,13 +350,23 @@ iframe {
 
 .login100-form-title {
 	font-family: Poppins-Bold;
-	font-size: 24px;
+	font-size: 40px;
 	color: #fff;
 	line-height: 1.2;
 	text-align: center;
 	width: 100%;
 	display: block;
 	padding-bottom: 54px;
+}
+
+.login100-form-data {
+	font-family: Poppins-Regular;
+	font-size: 25px;
+	color: #fff;
+	line-height: 1.2;
+	text-align: left;
+	display: block;
+	padding-top: 30px;
 }
 
 

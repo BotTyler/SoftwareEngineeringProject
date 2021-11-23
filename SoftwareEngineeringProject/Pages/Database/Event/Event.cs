@@ -21,10 +21,15 @@ namespace SoftwareEngineeringProject.Pages.Database
         public string EventName { get; set; }
 
         [BindProperty]
+        [Required(ErrorMessage = "A Location is Required!")]
+        public string EventLocation { get; set; }
+
+        [BindProperty]
         [Required(ErrorMessage = "An event date is Required!")]
         public DateTime EventDate { get; set; }
 
         [BindProperty]
+        [Required(ErrorMessage = "Enter the number of availiable slots!")]
         public int NumberOfSlots { get; set; }
 
         [BindProperty]
