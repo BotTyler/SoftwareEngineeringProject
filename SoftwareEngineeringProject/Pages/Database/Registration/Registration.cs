@@ -13,13 +13,16 @@ namespace SoftwareEngineeringProject.Pages.Database
         {
 
         }
+
         [BindProperty]
         public string _id { get; set; }
 
         [BindProperty]
+        [Required(ErrorMessage = "Please Enter a User ID")]
         public string UserInfo_ID { get; set; }
 
         [BindProperty]
+        [Required(ErrorMessage = "Please Enter a Event ID")]
         public string Event_ID { get; set; }
     }
 }

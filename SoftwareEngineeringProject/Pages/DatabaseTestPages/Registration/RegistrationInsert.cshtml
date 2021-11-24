@@ -1,0 +1,45 @@
+﻿@page
+@model RegistrationInsertModel
+@{
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+
+                <form class="login100-form validate-form" method="post">
+                    <div class="error" asp-validation-summary="ModelOnly"></div>
+                    <span class="login100-form-title">
+                        Registration Insert
+                    </span>
+
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="text" asp-for="registration.UserInfo_ID" placeholder="User ID">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <span class="error" asp-validation-for="registration.UserInfo_ID"></span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="text" asp-for="registration.Event_ID" placeholder="Event ID">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <span class="error" asp-validation-for="registration.Event_ID"></span>
+
+                    <span class="submit">@Model.statusMsg</span>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" asp-page-handler="submit">
+                            Insert Registration
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>

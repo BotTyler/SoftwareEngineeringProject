@@ -1,0 +1,71 @@
+﻿@page
+@model TestPageHubModel
+@{
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <span class="login100-form-title">Database Testing Pages</span>
+
+                <div>
+                    <span class="fs-10 login100-form-data">User Database</span>
+                    <ul>
+                        <li class="nav-item">
+                            <a class="nav-link fs-25 horizontally-spaced-list-format" asp-area="" asp-page="/DatabaseTestPages/User/UserInsert">Insert</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-25 horizontally-spaced-list-format" asp-area="" asp-page="/DatabaseTestPages/User/UserDelete">Delete</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-25 horizontally-spaced-list-format" asp-area="" asp-page="/DatabaseTestPages/User/UserSelect">Select</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-25 horizontally-spaced-list-format" asp-area="" asp-page="/DatabaseTestPages/User/UserUpdate">Update</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <span class="fs-10 login100-form-data">Event Database</span>
+                    <ul>
+                        <li class="nav-item">
+                            <a class="nav-link fs-25 horizontally-spaced-list-format" asp-area="" asp-page="/DatabaseTestPages/Event/EventInsert">Insert</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-25 horizontally-spaced-list-format" asp-area="" asp-page="/DatabaseTestPages/Event/EventDelete">Delete</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-25 horizontally-spaced-list-format" asp-area="" asp-page="/DatabaseTestPages/Event/EventSelect">Select</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-25 horizontally-spaced-list-format" asp-area="" asp-page="/DatabaseTestPages/Event/EventUpdate">Update</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <span class="fs-10 login100-form-data">Registration Database</span>
+
+                    <ul>
+                        <li class="nav-item">
+                            <a class="nav-link fs-25 horizontally-spaced-list-format" asp-area="" asp-page="/DatabaseTestPages/Registration/RegistrationInsert">Insert</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-25 horizontally-spaced-list-format" asp-area="" asp-page="/DatabaseTestPages/Registration/RegistrationDelete">Delete</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-25 horizontally-spaced-list-format" asp-area="" asp-page="/DatabaseTestPages/Registration/RegistrationSelect">Select</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-25 horizontally-spaced-list-format" asp-area="" asp-page="/DatabaseTestPages/Registration/RegistrationUpdate">Update</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

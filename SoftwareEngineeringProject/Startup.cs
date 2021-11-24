@@ -27,9 +27,9 @@ namespace SoftwareEngineeringProject
         {
             services.AddMvc().AddRazorPagesOptions(options =>
             {
-                //options.Conventions.AddPageRoute("/HomePage", "");
-
                 options.Conventions.AddPageRoute("/HomePage", "");
+
+                //options.Conventions.AddPageRoute("/DatabaseTestPages/TestPageHub", "");
             });
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             {

@@ -86,5 +86,26 @@ namespace SoftwareEngineeringProject.Pages.Database
             }
 
         }
+
+        public Registration[] selectAllRegisteredEvents()
+        {
+            var client = new RestClient(this.BaseDatabaseUrl);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("x-apikey", this.apiKey);
+            request.AddHeader("content-type", "application/json");
+            IRestResponse response = client.Execute(request);
+            if (response.IsSuccessful)
+            {
+
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                Registration[] userRegistrationList = js.Deserialize<Registration[]>(response.Content);
+                return userRegistrationList;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
