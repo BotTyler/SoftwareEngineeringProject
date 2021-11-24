@@ -39,13 +39,13 @@ namespace SoftwareEngineeringProject.Pages
         {
             if (ModelState.IsValid) // Checks to see if all fields are filled properly
             {
-                if (user.verifyUsernameIntegrity() == false || user.verifyPasswordIntegrity() == false)
+               /* if (user.verifyUsernameIntegrity() == false || user.verifyPasswordIntegrity() == false)
                 {
                     loginError = "Please only use characters a-z, 0-9, !, and @";
 
                 }
                 else
-                {
+                {*/
                     Cipher cipher = new Cipher(new DESCryptoServiceProvider());
                     user.Password = cipher.Encrypt(user.Password, user.Password);
 
@@ -62,7 +62,7 @@ namespace SoftwareEngineeringProject.Pages
                         // Account information is incorrect give error
                         loginError = "Invalid Login Information";
                     }
-                }
+               // }
             }
         }
 

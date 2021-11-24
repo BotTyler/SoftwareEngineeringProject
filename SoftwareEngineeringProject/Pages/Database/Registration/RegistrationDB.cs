@@ -62,10 +62,10 @@ namespace SoftwareEngineeringProject.Pages.Database
             return response.IsSuccessful;
         }
 
-        public Registration[] selectUserRegisteredEvent(UserInfoLogin user)
+        public Registration[] selectUserRegisteredEvent(string userID)
         {
             // q={ "status": "A" }
-            string QueryDatabaseUrl = BaseDatabaseUrl + "q={ \"UserInfo_ID\": \""+user._id+"\" }";
+            string QueryDatabaseUrl = BaseDatabaseUrl + "?q={ \"UserInfo_ID\": \""+userID+"\" }";
 
             var client = new RestClient(QueryDatabaseUrl);
             var request = new RestRequest(Method.GET);

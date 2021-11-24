@@ -21,11 +21,12 @@ namespace SoftwareEngineeringProject.Pages.Database
 
         [BindProperty]
         [Required(ErrorMessage = "Username is Required!")]
-        //[JsonProperty("Username")]
+        [RegularExpression(@"[a-zA-Z0-9!@]*", ErrorMessage = "Please only use characters \'a-z, A-Z, 0-9, !, and @\'")]
         public string Username { get; set; }
 
         [BindProperty]
         [Required(ErrorMessage = "Password required!")]
+        [RegularExpression(@"[a-zA-Z0-9!@]*", ErrorMessage = "Please only use characters \'a-z, A-Z, 0-9, !, and @\'")]
         [DataType(DataType.Password)]
         //[JsonProperty("Password")]
         public string Password { get; set; }
@@ -36,38 +37,6 @@ namespace SoftwareEngineeringProject.Pages.Database
             this.Username = "";
             this.Password = "";
         }
-
-
-        private char[] forbiddenChars = new char[] { '<', '>', ',', '.', '{', '}', '[', ']', '%', '&', '/', ' ', '+', '-', '`', '~' , '\"', '\'', '?', ':', ';', '#', '$', '^','*','(',')'};
-
-        public bool verifyUsernameIntegrity()
-        {
-
-            foreach(char a in forbiddenChars)
-            {
-                if (Username.Contains(a))
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        public bool verifyPasswordIntegrity()
-        {
-
-            foreach (char a in forbiddenChars)
-            {
-                if (Password.Contains(a))
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
     }
 
 

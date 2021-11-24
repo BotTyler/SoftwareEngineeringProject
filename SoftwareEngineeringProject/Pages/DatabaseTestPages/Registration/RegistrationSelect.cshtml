@@ -6,71 +6,77 @@
     <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/css/util.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/myEdit.css">
+
+
 </head>
 <body>
-    <div class="container p-3">
-        <div class="row pt-4">
-            <div class="col-6">
-                <h2 class="text-primary">Registration Select</h2>
+    <form class="login100-form validate-form" method="post">
+        <div class="container p-3">
+            <div class="row pt-4">
+                <div class="col-6">
+                    <h2 class="text-primary">Registration Select</h2>
+                </div>
             </div>
-        </div>
 
-        <br /><br />
-
-        @if (Model.regList != null && Model.regList.Count() > 0)
-        {
-            <table class="table table-bordered table-striped" style="width:100%">
-                <thead>
-                    <tr>
-                        <th class="text-white">
-                            _ID
-                        </th>
-                        <th class="text-white">
-                            UserInfo_ID
-                        </th>
-                        <th class="text-white">
-                            Event_ID
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (Database.Registration obj in Model.regList)
-                    {
+            <br /><br />
+            <div>
+                <div class="container-login100-form-btn">
+                    <input class="input100" type="text" asp-for="searchText" placeholder="Search">
+                    <button class="login100-form-btn" asp-page-handler="submit">
+                        Search
+                    </button>
+                </div>
+            </div>
+            <br /><br />
+            @if (Model.regList != null && Model.regList.Count() > 0)
+            {
+                <table class="table table-bordered table-striped" style="width:100%">
+                    <thead>
                         <tr>
-                            <td class="text-white" width="40%">@obj._id</td>
-                            <td class="text-white" width="30%">@obj.UserInfo_ID</td>
-                            <td class="text-white" width="30%">@obj.Event_ID</td>
-                            <!--
-                            <td class="text-center">
-                                <div class="w-75 btn-group" role="group">
-                                    <a asp-controller="Category" asp-route-Id="@obj" asp-action="Edit" class="btn btn-primary mx-2">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <a asp-controller="Category" asp-route-Id="@obj" asp-action="Delete" class="btn btn-danger mx-2">
-                                        <i class="far fa-trash-alt"></i>
-                                    </a>
-                                </div>
-                            </td>
-                            -->
+                            <th class="text-white">
+                                _ID
+                            </th>
+                            <th class="text-white">
+                                UserInfo_ID
+                            </th>
+                            <th class="text-white">
+                                Event_ID
+                            </th>
                         </tr>
-                    }
-                </tbody>
-            </table>
-        }
-        else
-        {
-            <p> No category exists.</p>
-        }
+                    </thead>
+                    <tbody>
+                        @foreach (Database.Registration obj in Model.regList)
+                        {
+                            <tr>
+                                <td class="text-white" width="40%">@obj._id</td>
+                                <td class="text-white" width="30%">@obj.UserInfo_ID</td>
+                                <td class="text-white" width="30%">@obj.Event_ID</td>
+                                <!--
+                                <td class="text-center">
+                                    <div class="w-75 btn-group" role="group">
+                                        <a asp-controller="Category" asp-route-Id="@obj" asp-action="Edit" class="btn btn-primary mx-2">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a asp-controller="Category" asp-route-Id="@obj" asp-action="Delete" class="btn btn-danger mx-2">
+                                            <i class="far fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                                -->
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p> No category exists.</p>
+            }
 
-        <br /><br />
-        <div>
-            <input class="input100" type="text" asp-for="searchText" placeholder="Confirm Password">
-            <div class="container-login100-form-btn">
-                <button class="login100-form-btn" asp-page-handler="submit">
-                    SignUp
-                </button>
-            </div>
+            <br /><br />
+
+
         </div>
-
-    </div>
+    </form>
 </body>

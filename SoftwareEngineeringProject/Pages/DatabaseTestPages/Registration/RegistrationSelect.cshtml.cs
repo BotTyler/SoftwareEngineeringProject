@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,7 @@ namespace SoftwareEngineeringProject.Pages.DatabaseTestPages
         public Database.Registration[] regList { get; set; }
         
         [BindProperty]
+        [Required(ErrorMessage ="Please enter a word.")]
         public string searchText { get; set; }
 
         public string statusMsg { get; set; }
@@ -24,11 +26,23 @@ namespace SoftwareEngineeringProject.Pages.DatabaseTestPages
             this._configuration = configuration;
         }
 
-
+        
         public void OnGet()
         {
             RegistrationDB db = new RegistrationDB(_configuration["ApiKey:DefaultKey"]);
-            regList = db.selectAllRegisteredEvents();
+            //string a = Request.QueryString("searchText");
+            
+            //regList = db.selectUserRegisteredEvent(a);
+        }
+
+        public void OnPost()
+        {
+            if (ModelState.IsValid)
+            {
+                
+                RegistrationDB db = new RegistrationDB(_configuration["ApiKey:DefaultKey"]);
+                regList = db.selectUserRegisteredEvent(searchText);
+            }
         }
     }
 }
