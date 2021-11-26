@@ -1,5 +1,5 @@
 ﻿@page
-@model SoftwareEngineeringProject.Pages.DatabaseTestPages.User.UserInsertModel
+@model SoftwareEngineeringProject.Pages.DatabaseTestPages.User.UserUpdateHelperModel
 @{
 }
 <head>
@@ -12,27 +12,31 @@
         <div class="container-login100">
             <div class="wrap-login100">
 
-                <form class="login100-form validate-form" method="post">
+                <form class="login100-form validate-form" method="post" asp-page-handler="update">
+                    <input type="hidden" asp-for="user._id" value="@Model.user._id" />
                     <div class="error" asp-validation-summary="ModelOnly"></div>
                     <span class="login100-form-title">
-                        User Insert
+                        User Update
                     </span>
-
                     <div class="wrap-input100 validate-input">
-                        <input class="input100" type="text" asp-for="user.Username" placeholder="Username">
+                        <label class="text-white">Username</label>
+                        <input class="input100" type="text" asp-for="user.Username" placeholder="User ID" value="@Model.user.Username">
+                        <span class="focus-input100"></span>
                     </div>
                     <span class="error" asp-validation-for="user.Username"></span>
 
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" asp-for="user.Password" placeholder="Password">
+                        <label class="text-white">Password (plain text)</label>
+                        <input class="input100" type="password" asp-for="user.Password" placeholder="Event ID" value="@Model.user.Password">
+                        <span class="focus-input100"></span>
                     </div>
                     <span class="error" asp-validation-for="user.Password"></span>
 
-                    <span class="submit">@Model.statusMsg</span>
+                    @*<span class="submit">@Model.statusMsg</span>*@
 
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" asp-page-handler="submit">
-                            Insert
+                        <button class="login100-form-btn" asp-page-handler="update">
+                            Update User
                         </button>
                     </div>
                 </form>

@@ -76,7 +76,7 @@ namespace SoftwareEngineeringProject.Pages.Database
             request.AddHeader("cache-control", "no-cache");
             request.AddHeader("x-apikey", apiKey);
             request.AddHeader("content-type", "application/json");
-            request.AddParameter("application/json", "{\"Username\":"+user.Username+"\",\"Password\":\""+user.Password+"\"}", ParameterType.RequestBody);
+            request.AddParameter("application/json", "{\"Username\":\""+user.Username+"\",\"Password\":\""+user.Password+"\"}", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
 
             return response.IsSuccessful;
