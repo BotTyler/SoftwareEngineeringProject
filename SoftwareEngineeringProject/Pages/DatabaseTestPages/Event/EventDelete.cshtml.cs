@@ -15,6 +15,9 @@ namespace SoftwareEngineeringProject.Pages.DatabaseTestPages.Event
         [BindProperty]
         public Database.Event[] eventList { get; set; }
 
+        public string statusMsg { get; set; }
+
+
         private readonly IConfiguration _configuration;
         public EventDeleteModel(IConfiguration configuration)
         {
@@ -33,7 +36,14 @@ namespace SoftwareEngineeringProject.Pages.DatabaseTestPages.Event
             if (ModelState.IsValid)
             {
                 EventDB db = new EventDB(_configuration["ApiKey:DefaultKey"]);
-                db.deleteEvent(id);
+                if (db.deleteEvent(id))
+                {
+                    statusMsg = "Deleted \'" + id + "\'";
+                }
+                else
+                {
+                    statusMsg = "Cannot Delete";
+                }
                 eventList = db.selectAllEvents();
             }
         }

@@ -14,6 +14,7 @@ namespace SoftwareEngineeringProject.Pages.DatabaseTestPages.Registration
     {
         [BindProperty]
         public Database.Registration registration { get; set; }
+        public string statusMsg { get; set; }
 
         private readonly IConfiguration _configuration;
         public RegistrationUpdateHelperModel(IConfiguration configuration)
@@ -31,7 +32,15 @@ namespace SoftwareEngineeringProject.Pages.DatabaseTestPages.Registration
             if (ModelState.IsValid)
             {
                 RegistrationDB db = new RegistrationDB(_configuration["ApiKey:DefaultKey"]);
-                db.updateRegistration(registration);
+                if(db.updateRegistration(registration))
+                {
+                    statusMsg = "The Event was updated";
+                }
+                else
+                {
+                    statusMsg = "The Event was not updated";
+
+                }
                 Response.Redirect("/DatabaseTestPages/Registration/RegistrationUpdate");
             }
         }

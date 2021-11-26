@@ -14,6 +14,7 @@ namespace SoftwareEngineeringProject.Pages.DatabaseTestPages.User
     {
         [BindProperty]
         public Database.UserInfoLogin user { get; set; }
+        public string statusMsg { get; set; }
 
         private readonly IConfiguration _configuration;
         public UserUpdateHelperModel(IConfiguration configuration)
@@ -31,7 +32,15 @@ namespace SoftwareEngineeringProject.Pages.DatabaseTestPages.User
             if (ModelState.IsValid)
             {
                 UserInfoDB db = new UserInfoDB(_configuration["ApiKey:DefaultKey"]);
-                db.updateuser(user);
+                if (db.updateuser(user))
+                {
+                    statusMsg = "The Event was updated";
+                }
+                else
+                {
+                    statusMsg = "The Event was not updated";
+
+                }
                 Response.Redirect("/DatabaseTestPages/User/UserUpdate");
             }
         }

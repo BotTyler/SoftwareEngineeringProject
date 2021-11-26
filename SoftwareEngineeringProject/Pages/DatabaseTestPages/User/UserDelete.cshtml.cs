@@ -14,6 +14,7 @@ namespace SoftwareEngineeringProject.Pages.DatabaseTestPages.User
     {
         [BindProperty]
         public Database.UserInfoLogin[] userList { get; set; }
+        public string statusMsg { get; set; }
 
         private readonly IConfiguration _configuration;
         public UserDeleteModel(IConfiguration configuration)
@@ -33,7 +34,14 @@ namespace SoftwareEngineeringProject.Pages.DatabaseTestPages.User
             if (ModelState.IsValid)
             {
                 UserInfoDB db = new UserInfoDB(_configuration["ApiKey:DefaultKey"]);
-                db.deleteUser(id);
+                if (db.deleteUser(id))
+                {
+                    statusMsg = "Deleted \'" + id + "\'";
+                }
+                else
+                {
+                    statusMsg = "Cannot Delete";
+                }
                 userList = db.getAllUsers();
             }
         }

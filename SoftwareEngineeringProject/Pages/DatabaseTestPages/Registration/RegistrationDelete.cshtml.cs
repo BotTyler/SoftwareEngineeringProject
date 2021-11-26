@@ -15,6 +15,8 @@ namespace SoftwareEngineeringProject.Pages.DatabaseTestPages
         [BindProperty]
         public Database.Registration[] regList { get; set; }
 
+        public string statusMsg { get; set; }
+
         private readonly IConfiguration _configuration;
         public RegistrationDeleteModel(IConfiguration configuration)
         {
@@ -33,7 +35,14 @@ namespace SoftwareEngineeringProject.Pages.DatabaseTestPages
             if (ModelState.IsValid)
             {
                 RegistrationDB db = new RegistrationDB(_configuration["ApiKey:DefaultKey"]);
-                db.deleteRegistration(id);
+                if(db.deleteRegistration(id))
+                {
+                    statusMsg = "Deleted \'" + id + "\'";
+                }
+                else
+                {
+                    statusMsg = "Cannot Delete";
+                }
                 regList = db.selectAllRegisteredEvents();
             }
         }

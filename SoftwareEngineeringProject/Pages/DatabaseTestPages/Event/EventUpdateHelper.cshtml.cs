@@ -15,6 +15,9 @@ namespace SoftwareEngineeringProject.Pages.DatabaseTestPages.Event
         [BindProperty]
         public Database.Event regEvent { get; set; }
 
+        public string statusMsg { get; set; }
+
+
         private readonly IConfiguration _configuration;
         public EventUpdateHelperModel(IConfiguration configuration)
         {
@@ -31,7 +34,15 @@ namespace SoftwareEngineeringProject.Pages.DatabaseTestPages.Event
             if (ModelState.IsValid)
             {
                 EventDB db = new EventDB(_configuration["ApiKey:DefaultKey"]);
-                db.updateEvent(regEvent);
+                if (db.updateEvent(regEvent))
+                {
+                    statusMsg = "The Event was updated";
+                }
+                else
+                {
+                    statusMsg = "The Event was not updated";
+
+                }
                 Response.Redirect("/DatabaseTestPages/Event/EventUpdate");
             }
         }
