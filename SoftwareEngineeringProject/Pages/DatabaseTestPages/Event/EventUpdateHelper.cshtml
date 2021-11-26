@@ -1,5 +1,5 @@
 ﻿@page
-@model SoftwareEngineeringProject.Pages.DatabaseTestPages.Event.EventInsertModel
+@model SoftwareEngineeringProject.Pages.DatabaseTestPages.Event.EventUpdateHelperModel
 @{
 }
 <head>
@@ -12,7 +12,8 @@
         <div class="container-login100">
             <div class="wrap-login100">
 
-                <form class="login100-form validate-form" method="post">
+                <form class="login100-form validate-form" method="post" asp-page-handler="update">
+                    <input type="hidden" asp-for="regEvent._id" value="@Model.regEvent._id" />
                     <div class="error" asp-validation-summary="ModelOnly"></div>
                     <span class="login100-form-title">
                         Event Registration Details
@@ -82,10 +83,9 @@
                             <span class="error" asp-validation-for="regEvent.EventDescription"></span>
                         </div>
                     </div>
-                    <span class="submit">@Model.statusMsg</span>
 
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" asp-page-handler="submit">
+                        <button class="login100-form-btn" asp-page-handler="update">
                             Submit
                         </button>
                     </div>

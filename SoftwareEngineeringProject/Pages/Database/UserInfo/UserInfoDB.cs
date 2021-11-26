@@ -54,9 +54,9 @@ namespace SoftwareEngineeringProject.Pages.Database
             }
         }
 
-        public bool deleteUser(UserInfoLogin user)
+        public bool deleteUser(string _id)
         {
-            var deleteUrl = BaseDatabaseUrl + "/"+user._id+"";
+            var deleteUrl = BaseDatabaseUrl + "/"+_id+"";
             var client = new RestClient(deleteUrl);
             var request = new RestRequest(Method.DELETE);
             request.AddHeader("cache-control", "no-cache");
@@ -68,7 +68,7 @@ namespace SoftwareEngineeringProject.Pages.Database
         }
 
         // Not sure if this works
-        public bool updateUserPassword(UserInfoLogin user, string newPassword)
+        public bool updateuser(UserInfoLogin user)
         {
             string updateUrl = BaseDatabaseUrl + "/" + user._id + "";
             var client = new RestClient(updateUrl);
@@ -76,7 +76,7 @@ namespace SoftwareEngineeringProject.Pages.Database
             request.AddHeader("cache-control", "no-cache");
             request.AddHeader("x-apikey", apiKey);
             request.AddHeader("content-type", "application/json");
-            request.AddParameter("application/json", "{\"Password\":\""+newPassword+"\"}", ParameterType.RequestBody);
+            request.AddParameter("application/json", "{\"Username\":"+user.Username+"\",\"Password\":\""+user.Password+"\"}", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
 
             return response.IsSuccessful;
@@ -142,6 +142,31 @@ namespace SoftwareEngineeringProject.Pages.Database
                 UserInfoLogin[] userList = js.Deserialize<UserInfoLogin[]>(response.Content);
                 return userList;
                 
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        // gets a user by its auto generated ID
+        public UserInfoLogin getUserByID(string _id)
+        {
+            string QueryDatabaseUrl = BaseDatabaseUrl + "/"+_id+"";
+
+            var client = new RestClient(QueryDatabaseUrl);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("x-apikey", this.apiKey);
+            request.AddHeader("content-type", "application/json");
+            IRestResponse response = client.Execute(request);
+            if (response.IsSuccessful)
+            {
+
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                UserInfoLogin userList = js.Deserialize<UserInfoLogin>(response.Content); // dont use UserInfoLogin[]
+                return userList;
+
             }
             else
             {

@@ -8,33 +8,31 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using SoftwareEngineeringProject.Pages.Database;
 
-namespace SoftwareEngineeringProject.Pages.DatabaseTestPages
+namespace SoftwareEngineeringProject.Pages.DatabaseTestPages.Registration
 {
-    public class RegistrationDeleteModel : PageModel
+    public class RegistrationUpdateHelperModel : PageModel
     {
         [BindProperty]
-        public Database.Registration[] regList { get; set; }
+        public Database.Registration registration { get; set; }
 
         private readonly IConfiguration _configuration;
-        public RegistrationDeleteModel(IConfiguration configuration)
+        public RegistrationUpdateHelperModel(IConfiguration configuration)
         {
             this._configuration = configuration;
         }
-
-        public void OnGet()
+        public void OnGet([FromUri] string id)
         {
             RegistrationDB db = new RegistrationDB(_configuration["ApiKey:DefaultKey"]);
-
-            regList = db.selectAllRegisteredEvents();
+            registration = db.selectRegistrationByID(id);
         }
 
-        public void OnPostDelete([FromUri] string id)
+        public void OnPostUpdate()
         {
             if (ModelState.IsValid)
             {
                 RegistrationDB db = new RegistrationDB(_configuration["ApiKey:DefaultKey"]);
-                db.deleteRegistration(id);
-                regList = db.selectAllRegisteredEvents();
+                db.updateRegistration(registration);
+                Response.Redirect("/DatabaseTestPages/Registration/RegistrationUpdate");
             }
         }
     }

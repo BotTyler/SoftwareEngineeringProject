@@ -13,7 +13,6 @@ namespace SoftwareEngineeringProject.Pages.Database
         {
 
         }
-
         [BindProperty]
         public string _id { get; set; }
 

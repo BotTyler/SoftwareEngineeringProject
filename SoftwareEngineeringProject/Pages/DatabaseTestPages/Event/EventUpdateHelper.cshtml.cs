@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
@@ -9,36 +10,29 @@ using SoftwareEngineeringProject.Pages.Database;
 
 namespace SoftwareEngineeringProject.Pages.DatabaseTestPages.Event
 {
-    public class EventInsertModel : PageModel
+    public class EventUpdateHelperModel : PageModel
     {
         [BindProperty]
         public Database.Event regEvent { get; set; }
 
-        public string statusMsg { get; set; }
-
         private readonly IConfiguration _configuration;
-        public EventInsertModel(IConfiguration configuration)
+        public EventUpdateHelperModel(IConfiguration configuration)
         {
             this._configuration = configuration;
         }
-
-        public void OnGet()
+        public void OnGet([FromUri] string id)
         {
+            EventDB db = new EventDB(_configuration["ApiKey:DefaultKey"]);
+            regEvent = db.selectEventByID(id);
         }
-        public void OnPost()
+
+        public void OnPostUpdate()
         {
             if (ModelState.IsValid)
             {
                 EventDB db = new EventDB(_configuration["ApiKey:DefaultKey"]);
-                bool isInserted = db.insertEvent(regEvent);
-                if (isInserted)
-                {
-                    statusMsg = "The registration was inserted";
-                }
-                else
-                {
-                    statusMsg = "The registration was not inserted";
-                }
+                db.updateEvent(regEvent);
+                Response.Redirect("/DatabaseTestPages/Event/EventUpdate");
             }
         }
     }

@@ -2229,6 +2229,7 @@
 /* ------------------------------------ */
 .text-white {color: white;}
 .text-black {color: black;}
+.text-black-important{color:black !important;}
 
 .text-hov-white:hover {color: white;}
 

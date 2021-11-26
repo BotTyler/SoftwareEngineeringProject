@@ -37,7 +37,7 @@ namespace SoftwareEngineeringProject.Pages.Database
             
         }
 
-        public void updateRegistration(Registration reg)
+        public bool updateRegistration(Registration reg)
         {
             string updateUrl = BaseDatabaseUrl + "/" + reg._id + "";
             var client = new RestClient(updateUrl);
@@ -47,11 +47,12 @@ namespace SoftwareEngineeringProject.Pages.Database
             request.AddHeader("content-type", "application/json");
             request.AddParameter("application/json", "{\"UserInfo_ID\":\"" + reg.UserInfo_ID + "\",\"Event_ID\":\"" + reg.Event_ID + "\"}", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
+            return response.IsSuccessful;
         }
 
-        public bool deleteRegistration(Registration reg)
+        public bool deleteRegistration(string id)
         {
-            var deleteUrl = BaseDatabaseUrl + "/" + reg._id + "";
+            var deleteUrl = BaseDatabaseUrl + "/" + id + "";
             var client = new RestClient(deleteUrl);
             var request = new RestRequest(Method.DELETE);
             request.AddHeader("cache-control", "no-cache");
@@ -62,7 +63,7 @@ namespace SoftwareEngineeringProject.Pages.Database
             return response.IsSuccessful;
         }
 
-        public Registration[] selectUserRegisteredEvent(string userID)
+        public Registration[] selectUserRegisteredEventByUserID(string userID)
         {
             // q={ "status": "A" }
             string QueryDatabaseUrl = BaseDatabaseUrl + "?q={ \"UserInfo_ID\": \""+userID+"\" }";
@@ -85,6 +86,30 @@ namespace SoftwareEngineeringProject.Pages.Database
                 return null;
             }
 
+        }
+
+        // this will get the registration by its unqiue registration number
+        public Registration selectRegistrationByID(string _id)
+        {
+            string QueryDatabaseUrl = BaseDatabaseUrl + "/"+_id;
+
+            var client = new RestClient(QueryDatabaseUrl);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("x-apikey", this.apiKey);
+            request.AddHeader("content-type", "application/json");
+            IRestResponse response = client.Execute(request);
+            if (response.IsSuccessful)
+            {
+
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                Registration userRegistrationList = js.Deserialize<Registration>(response.Content);
+                return userRegistrationList;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public Registration[] selectAllRegisteredEvents()

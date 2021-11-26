@@ -14,9 +14,9 @@ namespace SoftwareEngineeringProject.Pages.DatabaseTestPages
     {
         [BindProperty]
         public Database.Registration[] regList { get; set; }
-        
+
         [BindProperty]
-        [Required(ErrorMessage ="Please enter a word.")]
+        [Required(ErrorMessage = "Please enter a word.")]
         public string searchText { get; set; }
 
         public string statusMsg { get; set; }
@@ -26,22 +26,29 @@ namespace SoftwareEngineeringProject.Pages.DatabaseTestPages
             this._configuration = configuration;
         }
 
-        
+
         public void OnGet()
         {
             RegistrationDB db = new RegistrationDB(_configuration["ApiKey:DefaultKey"]);
-            //string a = Request.QueryString("searchText");
-            
-            //regList = db.selectUserRegisteredEvent(a);
+
+            regList = db.selectAllRegisteredEvents();
         }
 
         public void OnPost()
         {
+            RegistrationDB db = new RegistrationDB(_configuration["ApiKey:DefaultKey"]);
+
             if (ModelState.IsValid)
             {
-                
-                RegistrationDB db = new RegistrationDB(_configuration["ApiKey:DefaultKey"]);
-                regList = db.selectUserRegisteredEvent(searchText);
+
+
+                regList = db.selectUserRegisteredEventByUserID(searchText);
+
+
+            }
+            else
+            {
+                regList = db.selectAllRegisteredEvents();
             }
         }
     }

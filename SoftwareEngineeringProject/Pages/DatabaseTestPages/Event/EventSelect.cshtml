@@ -2,3 +2,107 @@
 @model SoftwareEngineeringProject.Pages.DatabaseTestPages.Event.EventSelectModel
 @{
 }
+<head>
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/myEdit.css">
+
+
+</head>
+<body>
+    <form class="login100-form validate-form" method="post">
+        <div class="container p-3">
+            <div class="row pt-4">
+                <div class="col-6">
+                    <h2 class="text-primary">Event Select</h2>
+                </div>
+            </div>
+
+            <br /><br />
+            <div class="text-center">
+                <label class="text-white fs-20">Search By Event Name</label>
+                <div class="container-login100-form-btn">
+                    <input class="input100" type="text" asp-for="searchText" placeholder="Search">
+                    <button class="login100-form-btn" asp-page-handler="submit">
+                        Search
+                    </button>
+                </div>
+            </div>
+            <br /><br />
+            @if (Model.eventList != null && Model.eventList.Count() > 0)
+            {
+                <table class="table table-bordered table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th class="text-white fs-10">
+                                _ID
+                            </th>
+                            <th class="text-white fs-10">
+                                EventName
+                            </th>
+                            <th class="text-white fs-10">
+                                EventLocation
+                            </th>
+                            <th class="text-white fs-10">
+                                EventDate
+                            </th>
+                            <th class="text-white fs-10">
+                                NumberOfSlots
+                            </th>
+                            <th class="text-white fs-10">
+                                AvailableSlots
+                            </th>
+                            <th class="text-white fs-10">
+                                EventDescription
+                            </th>
+                            <th class="text-white fs-10">
+                                Owner_ID
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Database.Event obj in Model.eventList)
+                        {
+                        <tr>
+                            <td class="text-white fs-10" width="10%">@obj._id</td>
+                            <td class="text-white fs-10" width="10%">@obj.EventName</td>
+                            <td class="text-white fs-10" width="10%">@obj.EventLocation</td>
+                            <td class="text-white fs-10" width="10%">@obj.EventDate</td>
+                            <td class="text-white fs-10" width="10%">@obj.NumberOfSlots</td>
+                            <td class="text-white fs-10" width="10%">@obj.AvailableSlots</td>
+                            <td class="text-white fs-10" width="30%">@obj.EventDescription</td>
+                            <td class="text-white fs-10" width="10%">@obj.Owner_ID</td>
+
+
+
+
+
+                            <!--
+    <td class="text-center">
+        <div class="w-75 btn-group" role="group">
+            <a asp-controller="Category" asp-route-Id="@obj" asp-action="Edit" class="btn btn-primary mx-2">
+                <i class="fas fa-edit"></i>
+            </a>
+            <a asp-controller="Category" asp-route-Id="@obj" asp-action="Delete" class="btn btn-danger mx-2">
+                <i class="far fa-trash-alt"></i>
+            </a>
+        </div>
+    </td>
+    -->
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p> No category exists.</p>
+            }
+
+            <br /><br />
+
+
+        </div>
+    </form>
+</body>

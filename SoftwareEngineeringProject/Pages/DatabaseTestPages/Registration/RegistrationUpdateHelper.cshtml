@@ -1,0 +1,47 @@
+﻿@page
+@model RegistrationUpdateHelperModel
+@{
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+
+                <form class="login100-form validate-form" method="post" asp-page-handler="update">
+                    <input type="hidden" asp-for="registration._id" value="@Model.registration._id"/>
+                    <div class="error" asp-validation-summary="ModelOnly"></div>
+                    <span class="login100-form-title">
+                        Registration Update
+                    </span>
+                    <div class="wrap-input100 validate-input">
+                        <label class="text-white">UserInfo_ID</label>
+                        <input class="input100" type="text" asp-for="registration.UserInfo_ID" placeholder="User ID" value="@Model.registration.UserInfo_ID">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <span class="error" asp-validation-for="registration.UserInfo_ID"></span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <label class="text-white">Event_ID</label>
+                        <input class="input100" type="text" asp-for="registration.Event_ID" placeholder="Event ID" value="@Model.registration.Event_ID">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <span class="error" asp-validation-for="registration.Event_ID"></span>
+
+                    @*<span class="submit">@Model.statusMsg</span>*@
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" asp-page-handler="update">
+                            Update Registration
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>

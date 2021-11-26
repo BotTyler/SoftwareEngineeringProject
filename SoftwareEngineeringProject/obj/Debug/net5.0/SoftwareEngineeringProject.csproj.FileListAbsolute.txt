@@ -114,3 +114,8 @@ C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\Sof
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\DatabaseTestPages\User\UserSelect.cshtml.g.cs
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\DatabaseTestPages\User\UserUpdate.cshtml.g.cs
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\DatabaseTestPages\Registration\RegistrationSelect.cshtml.g.cs
+C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\bin\Debug\net5.0\System.Net.Http.Formatting.dll
+C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\bin\Debug\net5.0\System.Web.Http.dll
+C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\DatabaseTestPages\Registration\RegistrationUpdateHelper.cshtml.g.cs
+C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\DatabaseTestPages\Event\EventUpdateHelper.cshtml.g.cs

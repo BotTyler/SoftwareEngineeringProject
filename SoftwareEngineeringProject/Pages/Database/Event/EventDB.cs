@@ -51,7 +51,7 @@ namespace SoftwareEngineeringProject.Pages.Database
             return response.IsSuccessful;
         }
 
-        public void updateEvent(Event updateEvent)
+        public bool updateEvent(Event updateEvent)
         {
             string updateUrl = BaseDatabaseUrl + "/" + updateEvent._id + "";
             var client = new RestClient(updateUrl);
@@ -61,11 +61,12 @@ namespace SoftwareEngineeringProject.Pages.Database
             request.AddHeader("content-type", "application/json");
             request.AddParameter("application/json", formatEventParam(updateEvent), ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
+            return response.IsSuccessful;
         }
 
-        public bool deleteEvent(Event delEvent)
+        public bool deleteEvent(string _id)
         {
-            var deleteUrl = BaseDatabaseUrl + "/" + delEvent._id + "";
+            var deleteUrl = BaseDatabaseUrl + "/" + _id + "";
             var client = new RestClient(deleteUrl);
             var request = new RestRequest(Method.DELETE);
             request.AddHeader("cache-control", "no-cache");
@@ -96,10 +97,10 @@ namespace SoftwareEngineeringProject.Pages.Database
             }
         }
 
-        public Event[] searchForEvents(string search)
+        public Event[] selectEvents(string search)
         {
             //q={ "user_id": {"$regex" :"bc"}}
-            string QueryDatabaseUrl = BaseDatabaseUrl + "q={ \"EventName\": {\"$regex\" :\""+search+"\"}}";
+            string QueryDatabaseUrl = BaseDatabaseUrl + "?q={ \"EventName\": {\"$regex\" :\""+search+"\"}}";
 
             var client = new RestClient(QueryDatabaseUrl);
             var request = new RestRequest(Method.GET);
@@ -112,6 +113,32 @@ namespace SoftwareEngineeringProject.Pages.Database
 
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 Event[] userList = js.Deserialize<Event[]>(response.Content);
+                return userList;
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+
+        public Event selectEventByID(string _id)
+        {
+            //q={ "user_id": {"$regex" :"bc"}}
+            string QueryDatabaseUrl = BaseDatabaseUrl + "/" +_id;
+
+            var client = new RestClient(QueryDatabaseUrl);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("x-apikey", this.apiKey);
+            request.AddHeader("content-type", "application/json");
+            IRestResponse response = client.Execute(request);
+            if (response.IsSuccessful)
+            {
+
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                Event userList = js.Deserialize<Event>(response.Content);
                 return userList;
             }
             else
