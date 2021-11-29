@@ -13,7 +13,7 @@ namespace SoftwareEngineeringProject.Pages.UserInfo
     public class UserInfoModel : PageModel
     {
         [BindProperty]
-        public Database.UserInfo[] userInfo { get; set; }
+        public Database.UserInfoLogin userInfo { get; set; }
 
         private readonly IConfiguration _configuration;
         public UserInfoModel(IConfiguration configuration)
@@ -32,4 +32,5 @@ namespace SoftwareEngineeringProject.Pages.UserInfo
         {
 
         }
+    }
 }
