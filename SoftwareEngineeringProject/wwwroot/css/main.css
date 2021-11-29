@@ -330,6 +330,21 @@ iframe {
   border-radius: 25px;
   padding: 20px 20px 0px 20px;
 }
+/*//////////////////////////////////////////////////////////////////
+[ events table ]*/
+
+.table, .th, .td {
+  border: 1px white solid;
+}
+
+th, td {
+	padding: 5px;
+}
+
+tr:hover {
+  background-color: #760094;
+}
+
 
 /*------------------------------------------------------------------
 [  ]*/
