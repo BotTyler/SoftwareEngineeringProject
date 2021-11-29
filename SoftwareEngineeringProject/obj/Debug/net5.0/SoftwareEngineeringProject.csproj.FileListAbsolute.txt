@@ -120,3 +120,4 @@ C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\Sof
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\DatabaseTestPages\Registration\RegistrationUpdateHelper.cshtml.g.cs
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\DatabaseTestPages\Event\EventUpdateHelper.cshtml.g.cs
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\DatabaseTestPages\User\UserUpdateHelper.cshtml.g.cs
+C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\Events.cshtml.g.cs
