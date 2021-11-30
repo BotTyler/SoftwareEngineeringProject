@@ -333,8 +333,46 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ events table ]*/
 
+.searchInput {
+  font-family: Poppins-Medium;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #000;
+
+  display: block;
+  width: 25%;
+  background: #e6e6e6;
+  height: 30px;
+  border-radius: 25px;
+  padding: 0 30px 0 68px;
+}
+
+.search-btn {
+  font-family: Montserrat-Bold;
+	font-size: 15px;
+	line-height: 1.5;
+	color: #fff;
+	text-transform: uppercase;
+	width: 12%;
+	height: 30px;
+	border-radius: 25px;
+	background: #760094;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	-webkit-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
 .table, .th, .td {
-  border: 1px white solid;
+  border: 5px white solid;
+  height: 100px;
 }
 
 th, td {
@@ -344,7 +382,6 @@ th, td {
 tr:hover {
   background-color: #760094;
 }
-
 
 /*------------------------------------------------------------------
 [  ]*/
