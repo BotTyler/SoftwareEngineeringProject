@@ -21,6 +21,8 @@
                     </div>
 
                     <br /><br />
+                    <span class="error">@Model.errormsg</span>
+                    <br />
                     <div class="text-center">
                         <label class="text-white fs-20">Search By Event Name</label>
                         <div class="container-login100-form-btn">
@@ -70,32 +72,32 @@
 
                                             @if (Model.regEvents != null && Model.regEvents.Length >= 1)
                                             {
-                                            <div class="w-75 btn-group" role="group">
+                                                <div class="w-75 btn-group" role="group">
 
-                                                    @for (int counter = 0; counter < Model.regEvents.Length; counter ++)
-                                                {
-                                                    Database.Registration reg = Model.regEvents[counter];
-
-                                                    @if (reg.Event_ID.Equals(obj._id))
+                                                    @for (int counter = 0; counter < Model.regEvents.Length; counter++)
                                                     {
-                                                        <button class="btn mx-2" asp-area="" asp-page-handler="unregister" asp-route-id="@obj._id">
-                                                            <i class="fa fa-check" style="color:white !important;" asp-page-handler="unregister"></i>
-                                                        </button>
+                                                        Database.Registration reg = Model.regEvents[counter];
 
-                                                        break;
+                                                        @if (reg.Event_ID.Equals(obj._id))
+                                                        {
+                                                            <button class="btn mx-2" asp-area="" asp-page-handler="unregister" asp-route-id="@obj._id">
+                                                                <i class="fa fa-check" style="color:white !important;" asp-page-handler="unregister"></i>
+                                                            </button>
+
+                                                            break;
+                                                        }
+                                                        else if (counter == Model.regEvents.Length - 1)
+                                                        {
+                                                            <button class="btn background-register-button mx-2" asp-area="" asp-page-handler="register" asp-route-id="@obj._id">
+
+                                                                <i class="fa fa-plus text-black-important" aria-hidden="true" asp-page-handler="register"></i>
+                                                            </button>
+
+
+                                                        }
+
                                                     }
-                                                    else if (counter == Model.regEvents.Length - 1)
-                                                    {
-                                                        <button class="btn background-register-button mx-2" asp-area="" asp-page-handler="register" asp-route-id="@obj._id">
-
-                                                            <i class="fa fa-plus text-black-important" aria-hidden="true" asp-page-handler="register"></i>
-                                                        </button>
-
-
-                                                    }
-
-                                                }
-                                            </div>
+                                                </div>
 
 
 

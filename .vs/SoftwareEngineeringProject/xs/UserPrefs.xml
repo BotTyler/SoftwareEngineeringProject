@@ -1,9 +1,10 @@
 ﻿<Properties StartupConfiguration="{EE9E4551-F414-4CE0-9316-E8CCB02B2CC7}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SoftwareEngineeringProject/Pages/Shared/_Layout.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SoftwareEngineeringProject/Pages/Events.cshtml">
     <Files>
-      <File FileName="SoftwareEngineeringProject/Pages/HomePage.cshtml" Line="1" Column="1" />
-      <File FileName="SoftwareEngineeringProject/wwwroot/css/main.css" Line="47" Column="13" />
-      <File FileName="SoftwareEngineeringProject/Pages/Shared/_Layout.cshtml" Line="7" Column="34" />
+      <File FileName="SoftwareEngineeringProject/Pages/Events.cshtml.cs" Line="107" Column="1" />
+      <File FileName="SoftwareEngineeringProject/Pages/LoginPage.cshtml" Line="43" Column="1" />
+      <File FileName="SoftwareEngineeringProject/Pages/EventRegistration.cshtml.cs" Line="1" Column="1" />
+      <File FileName="SoftwareEngineeringProject/Pages/Events.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,10 +15,9 @@
                 <Node name="Database" expanded="True">
                   <Node name="Event" expanded="True" />
                 </Node>
-                <Node name="Shared" expanded="True">
-                  <Node name="_Layout.cshtml" selected="True" />
-                </Node>
+                <Node name="Shared" expanded="True" />
                 <Node name="EventRegistration.cshtml" expanded="True" />
+                <Node name="Events.cshtml" expanded="True" selected="True" />
                 <Node name="HomePage.cshtml" expanded="True" />
                 <Node name="LoginPage.cshtml" expanded="True" />
                 <Node name="Signup.cshtml" expanded="True" />
@@ -38,7 +38,11 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/tyler/Desktop/softwareproject/SoftwareEngineeringProject/SoftwareEngineeringProject/Pages/Events.cshtml.cs" relfile="SoftwareEngineeringProject/Pages/Events.cshtml.cs" line="67" column="1" />
+      <Breakpoint file="/Users/tyler/Desktop/softwareproject/SoftwareEngineeringProject/SoftwareEngineeringProject/Pages/Events.cshtml.cs" relfile="SoftwareEngineeringProject/Pages/Events.cshtml.cs" line="38" column="1" />
+      <Breakpoint file="/Users/tyler/Desktop/softwareproject/SoftwareEngineeringProject/SoftwareEngineeringProject/Pages/Events.cshtml.cs" relfile="SoftwareEngineeringProject/Pages/Events.cshtml.cs" line="107" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

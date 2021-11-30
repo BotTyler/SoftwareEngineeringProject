@@ -13,6 +13,8 @@ namespace SoftwareEngineeringProject.Pages
 {
     public class EventsModel : PageModel
     {
+        public string errormsg = "";
+
         [BindProperty]
         public Database.Event[] eventList { get; set; }
 
@@ -79,10 +81,13 @@ namespace SoftwareEngineeringProject.Pages
         }
         public void OnPostRegister([FromUri] string id)
         {
-            EventDB db = new EventDB(_configuration["ApiKey:DefaultKey"]);
+
 
             if (HttpContext.User.Identity.IsAuthenticated)
             {
+                EventDB db = new EventDB(_configuration["ApiKey:DefaultKey"]);
+                Database.Event e = db.selectEventByID(id);
+                if(e.AvailableSlots >= 1) {
                 RegistrationDB reg = new RegistrationDB(_configuration["ApiKey:DefaultKey"]);
                 string authenticatedUserID = HttpContext.User.FindFirst("ID").Value;
 
@@ -92,7 +97,16 @@ namespace SoftwareEngineeringProject.Pages
                 registrationHelper.Event_ID = id;
 
                 reg.insertRegistration(registrationHelper);
+                    e.AvailableSlots--;
+                    db.updateEvent(e);
                     Response.Redirect("/Events");
+                }
+                else
+                {
+                    // not enough slots
+                    errormsg = "Not enough slots";
+                    eventList = db.selectAllEvents();
+                }
 
             }
             else
@@ -102,14 +116,18 @@ namespace SoftwareEngineeringProject.Pages
         }
         public void OnPostUnregister([FromUri] string id)
         {
-            EventDB db = new EventDB(_configuration["ApiKey:DefaultKey"]);
 
             if (HttpContext.User.Identity.IsAuthenticated)
             {
+                EventDB db = new EventDB(_configuration["ApiKey:DefaultKey"]);
+
                 RegistrationDB reg = new RegistrationDB(_configuration["ApiKey:DefaultKey"]);
                 string authenticatedUserID = HttpContext.User.FindFirst("ID").Value;
 
                 Database.Registration registrationHelper = reg.selectUserRegisteredEventByUserIDAndEventID(authenticatedUserID, id)[0];
+                Database.Event e = db.selectEventByID(id);
+                e.AvailableSlots++;
+                db.updateEvent(e);
 
                 reg.deleteRegistration(registrationHelper._id);
 
@@ -120,6 +138,7 @@ namespace SoftwareEngineeringProject.Pages
             {
                 Response.Redirect("/LoginPage");
             }
+
         }
     }
 }
