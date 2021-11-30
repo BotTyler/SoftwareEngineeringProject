@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
@@ -14,6 +15,9 @@ namespace SoftwareEngineeringProject.Pages
     {
         [BindProperty]
         public Database.Event[] eventList { get; set; }
+
+        [BindProperty]
+        public Database.Registration[] regEvents { get; set; }
 
         [BindProperty]
         [Required(ErrorMessage = "Please enter a word.")]
@@ -32,9 +36,31 @@ namespace SoftwareEngineeringProject.Pages
             EventDB db = new EventDB(_configuration["ApiKey:DefaultKey"]);
 
             eventList = db.selectAllEvents();
+
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                RegistrationDB reg = new RegistrationDB(_configuration["ApiKey:DefaultKey"]);
+
+                regEvents = reg.selectUserRegisteredEventByUserID(HttpContext.User.FindFirst("ID").Value);
+            }
         }
 
-        public void OnPost()
+        public void OnGetRegister([FromUri] string search)
+        {
+            EventDB db = new EventDB(_configuration["ApiKey:DefaultKey"]);
+
+            eventList = db.selectEvents(search);
+
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                RegistrationDB reg = new RegistrationDB(_configuration["ApiKey:DefaultKey"]);
+
+                regEvents = reg.selectUserRegisteredEventByUserID(HttpContext.User.FindFirst("ID").Value);
+            }
+        }
+
+
+        public void OnPostSearch()
         {
             EventDB db = new EventDB(_configuration["ApiKey:DefaultKey"]);
 
@@ -49,6 +75,50 @@ namespace SoftwareEngineeringProject.Pages
             else
             {
                 eventList = db.selectAllEvents();
+            }
+        }
+        public void OnPostRegister([FromUri] string id)
+        {
+            EventDB db = new EventDB(_configuration["ApiKey:DefaultKey"]);
+
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                RegistrationDB reg = new RegistrationDB(_configuration["ApiKey:DefaultKey"]);
+                string authenticatedUserID = HttpContext.User.FindFirst("ID").Value;
+
+                Database.Registration registrationHelper = new Database.Registration();
+
+                registrationHelper.UserInfo_ID = authenticatedUserID;
+                registrationHelper.Event_ID = id;
+
+                reg.insertRegistration(registrationHelper);
+                    Response.Redirect("/Events");
+
+            }
+            else
+            {
+                Response.Redirect("/LoginPage");
+            }
+        }
+        public void OnPostUnregister([FromUri] string id)
+        {
+            EventDB db = new EventDB(_configuration["ApiKey:DefaultKey"]);
+
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                RegistrationDB reg = new RegistrationDB(_configuration["ApiKey:DefaultKey"]);
+                string authenticatedUserID = HttpContext.User.FindFirst("ID").Value;
+
+                Database.Registration registrationHelper = reg.selectUserRegisteredEventByUserIDAndEventID(authenticatedUserID, id)[0];
+
+                reg.deleteRegistration(registrationHelper._id);
+
+                Response.Redirect("/Events");
+
+            }
+            else
+            {
+                Response.Redirect("/LoginPage");
             }
         }
     }

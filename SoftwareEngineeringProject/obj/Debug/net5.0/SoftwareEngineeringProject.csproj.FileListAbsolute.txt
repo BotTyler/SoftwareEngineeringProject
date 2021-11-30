@@ -85,11 +85,9 @@ C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\Sof
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\LoggingOutPages\LogoutPage.cshtml.g.cs
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\LoggingOutPages\LogOutProcessing.cshtml.g.cs
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\LoginPage.cshtml.g.cs
-C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\Privacy.cshtml.g.cs
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\Shared\_Layout.cshtml.g.cs
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\Signup.cshtml.g.cs
-C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\TempSecurePage.cshtml.g.cs
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\_ViewImports.cshtml.g.cs
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\Razor\Pages\_ViewStart.cshtml.g.cs
 C:\Users\tyler\Desktop\SoftwareEngineeringProject\SoftwareEngineeringProject\SoftwareEngineeringProject\obj\Debug\net5.0\SoftwareEngineeringProject.RazorTargetAssemblyInfo.cache
