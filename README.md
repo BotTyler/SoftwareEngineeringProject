@@ -12,3 +12,8 @@ Inside the main project folder 5 files exist:
 5) wwwroot - Files like css/fonts/js/lib files.
 
 The Program.cs and the Startup.cs files are there as config files for when the file is compiled and launched.
+
+Tyler Jarboe - Worked on Database connection, encryption and signin/signup features.
+David Jamieson - Worked on connecting all pages front end elements with backend features.
+Alexey Kuznetsov - Worked on the front end HTML pages.
+Maclane Raley - Worked on front end CSS and font files.
